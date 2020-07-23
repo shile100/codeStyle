@@ -7,6 +7,7 @@
   │   ├── app.js  应用启动入口
   │   ├── controller 接口参数校验及返回值
   │   ├── models  数据库ORM
+  │   ├── middleware  中间件
   │   ├── router  路由文件
   │   ├── repository  数据库交互
   │   └── services  逻辑代码
@@ -88,7 +89,46 @@ class UserService {
   }
 }
 ```
-## Repository
-## Model
-## Router
-
+## Model ORM 数据库关系映射
+### `用户model`
+```
+const modelName = "user";
+const schema = new mongoose.Schema({
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
+  state: { type: String, enum: ["wrong", "right"], default: "wrong" },
+  count: {type: Number, default: 1},
+  question: { type: mongoose.Schema.Types.ObjectId, ref: "qa_question" }
+});
+module.exports = mongoose.model(modelName, schema);
+```
+## Router 定义暴露接口
+```
+const qaRouter = express.Router();
+qaRouter.use(express.json());
+qaRouter.use(express.urlencoded({ extended: true }));
+qaRouter.get("/users", authenticate("jwt"), UserController.findUsers);
+module.exports = qaRouter;
+```
+## Middleware 中间件层
+### `错误处理中间件`
+```
+function errorHandler() {
+  return function (error, req, res, next) {
+    // 401
+    if (error.type === "FeathersError" && error.name === "NotAuthenticated") {
+      res.status(401).send({
+        error: 1,
+        message: error ? error.message : "未知错误"
+      });
+    } else {
+      // 500
+      res.send({
+        error: 1,
+        message: error ? error.message : "未知错误"
+      });
+    }
+  };
+};
+module.exports = errorHandler;
+```
+## Repository 如果使用mongoose无需创建
