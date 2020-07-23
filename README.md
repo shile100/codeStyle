@@ -29,7 +29,7 @@
 - `/order  [POST]` : 新增订单
 - `/order/:id [GET]` : 根据订单id获取订单
  
-## Controller 
+## Controller 主要职责 检查请求参数 处理返回值格式
 ### `用户Controller`
 ```
 class UserController {
@@ -68,7 +68,7 @@ class UserController {
 }
 ```
  
-## Service
+## Service 主要职责 封装逻辑代码
 ### `用户Service`
 ```
 class UserService {
