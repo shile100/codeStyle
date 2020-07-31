@@ -12,7 +12,7 @@
 见 [./javascript.md](https://github.com/shile100/codeStyle/blob/master/javascript.md)
 ## Git 规约
 ## Git Commit 规约
-见 [./commit.md](https://github.com/shile100/codeStyle/blob/master/node.md)
+见 [./commit.md](https://github.com/shile100/codeStyle/blob/master/commit.md)
 
 ## Git Workflow 规约
-见 [./workflow.md](https://github.com/shile100/codeStyle/blob/master/node.md)
+见 [./workflow.md](https://github.com/shile100/codeStyle/blob/master/workflow.md)

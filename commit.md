@@ -132,13 +132,3 @@ revert: feat(pencil): add 'graphiteWidth' option
 ```
 
 在commit body中, 填写`This reverts commit <hash>`, 其中`<hash>`是被撤销的commit 的SHA标识符
-
-### 其他
-
-- 必须使用英文撰写 message header, 不允许出现中文, 中文标点符号和汉语拼音.
-
-可以借助[google translate](https://translate.google.com/), [百度翻译](http://fanyi.baidu.com/)等翻译工具辅助撰写.
-
-message body 和 footer 可以使用中文.
-
-- 本规则主要参考了 `angular.js` 的 [Commit Message Guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit), 如有理解不清楚的地方可以参考原文.
